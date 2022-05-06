@@ -2,7 +2,7 @@
 /*
 Plugin Name: Wordpress Ajax login
 Plugin URI:https://cyclestart.ir
-Description: wordpress plugin to manage auth
+Description: wordpress plugin to manage auther
 Author: mars
 Author URI: https://cyclestart.ir
 Text Domain: wordpress-login
