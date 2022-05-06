@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Wordpress Auth
-Plugin URI:
+Plugin URI:www.
 Description: wordpress plugin to manage auth
 Author: mars
 Author URI: https://cyclestart.ir
