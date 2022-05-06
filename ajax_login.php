@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Wordpress Auth
+Plugin Name: Wordpress Ajax login
 Plugin URI:https://cyclestart.ir
 Description: wordpress plugin to manage auth
 Author: mars
