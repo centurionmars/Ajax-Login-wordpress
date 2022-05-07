@@ -5,15 +5,31 @@
     border-radius: 10px;
     padding: 35px 38px;
     text-align: center;
-
 }
-.register-wrapper ,.login-wrapper {
-
+.alert {
+    position: relative;
+    bottom: 100px;
+    border-radius: 10px;
+    width: 315px;
+    height: 51px;
+    background: rgb(131,58,180);
+    background: linear-gradient(20deg,
+    rgba(131,58,180,0.5190217391304348) 0%,
+    rgba(238,20,20,0.7364130434782609) 41%,
+    rgba(252,176,69,0.6304347826086957) 100%);
+}
+.alert, .alert-error{
+    background-color: #ff3824;
+    color: aqua;
+}
+.alert, .alert-success{
+    background-color: #ffc423;
 }
 .textLabel {
     margin: 0 16px 13px 0;
 }
-#userEmail ,#userPassword, #fName, #lName{
+#userEmail ,#userPassword, #fName, #lName ,
+#user_password_register, #user_email_register, #f_name, #l_name{
     border: none;
     border-radius: 50px;
     margin-bottom: 12px;

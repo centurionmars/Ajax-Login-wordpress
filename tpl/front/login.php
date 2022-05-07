@@ -1,9 +1,10 @@
 <div class="auth-wrapper">
+    <div class="alert" style="display: none;"></div>
     <div class="login-wrapper">
-        <form action="">
+        <form action="" method="post" id="loginForm">
             <div class="form-row">
                 <label for="userEmail" class="textLabel" ></label>
-                <input type="text" placeholder="ایمیل" class="textInput" name="userEmail" id="userEmail">
+                <input type="email" placeholder="ایمیل" class="textInput" name="userEmail" id="userEmail">
             </div>
             <div class="form-row">
                 <label for="userPassword" class="textLabel"></label>
