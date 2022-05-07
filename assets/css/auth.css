@@ -1,0 +1,28 @@
+.auth-wrapper {
+    margin: auto;
+    width: 400px;
+    background-color: #cdbcbc;
+    border-radius: 10px;
+    padding: 35px 38px;
+    text-align: center;
+
+}
+.register-wrapper ,.login-wrapper {
+
+}
+.textLabel {
+    margin: 0 16px 13px 0;
+}
+#userEmail ,#userPassword, #fName, #lName{
+    border: none;
+    border-radius: 50px;
+    margin-bottom: 12px;
+}
+.auth-wrapper button {
+    border: none;
+    border-radius: 50px;
+    color: #fff;!important;
+    background-color: #a284e5;
+    padding: 0.5rem 3rem 0.9rem;
+    text-align: center;
+}
