@@ -4,7 +4,7 @@
         <form action="" method="post" id="loginForm">
             <div class="form-row">
                 <label for="userEmail" class="textLabel" ></label>
-                <input type="email" placeholder="ایمیل" class="textInput" name="userEmail" id="userEmail">
+                <input type="text" placeholder="ایمیل" class="textInput" name="userEmail" id="userEmail">
             </div>
             <div class="form-row">
                 <label for="userPassword" class="textLabel"></label>

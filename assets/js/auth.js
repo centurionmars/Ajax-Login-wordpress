@@ -14,14 +14,23 @@ jQuery (document).ready(function ($){
                  user_password: user_password,
              },
              success: function (response){
-
+                 if (response.success) {
+                     notif.removeClass('alert_error').addClass('alert_success');
+                     notif.html('<p>' + response.message + '</p>');
+                     notif.css('display', 'block');
+                     setTimeout(function (){
+                         window.location.href = '/';
+                     }, 1000);
+                 }
              },
              error: function (error){
                  if (error)
                  {
-                     notif.addClass('alert-error');
-                     notif.append('<p>  خطایی رخ داد! ورود ناموفق بود</p>');
+                     let message = error.responseJSON.message;
+                     notif.addClass('alert_error');
+                     notif.html('<p>' + message + '</p>');
                      notif.css('display', 'block');
+                     notif.delay(2000).hide(300);
                  }
              }
          });
@@ -34,25 +43,27 @@ jQuery (document).ready(function ($){
         let user_password  = $('#user_password_register').val();
         let notif          = $('.alert');
         $.ajax({
-            url:        '/wp-admin/admin-ajax.php',
-            type:       'post',
-            dataType:   'json',
+            url:        "/wp-admin/admin-ajax.php",
+            type:       "post",
+            dataType:   "json",
             data: {
-                action: 'wp_auth_register',
+                action: "wp_auth_register",
                 first_name_reg:    first_name,
                 last_name_reg:     last_name,
                 user_email_reg:    user_email,
                 user_password_reg: user_password,
             },
             success: function (response){
-                alert(123);
             },
             error: function (error){
                 if (error)
                 {
-                    notif.addClass('alert-error');
-                    notif.append('<p>  خطایی رخ داد! ورود ناموفق بود</p>');
+                    let message = error.responseJSON.message;
+                    notif.addClass('alert_error');
+                    notif.html('<p>+ message + </p>');
                     notif.css('display', 'block');
+                    notif.delay(5000).hide(3000);
+
                 }
             }
         });
