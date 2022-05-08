@@ -5,14 +5,15 @@ jQuery (document).ready(function ($){
          let user_password = $('#userPassword').val();
          let notif = $('.alert');
          $.ajax({
-             url: '/wp-admin/admin-ajax.php',
-             type: 'post',
-             dataType: 'json',
-             data: {
-                 action: 'wp_auth_login',
-                 user_email: user_email,
-                 user_password: user_password,
-             },
+             url      : '/wp-admin/admin-ajax.php',
+             type     : 'post',
+             dataType : 'json',
+             data     :
+                 {
+                 action        : 'wp_auth_login',
+                 user_email    : user_email,
+                 user_password : user_password,
+                 },
              success: function (response){
                  if (response.success) {
                      notif.removeClass('alert_error').addClass('alert_success');
@@ -20,7 +21,7 @@ jQuery (document).ready(function ($){
                      notif.css('display', 'block');
                      setTimeout(function (){
                          window.location.href = '/';
-                     }, 1000);
+                     }, 2000);
                  }
              },
              error: function (error){
@@ -43,11 +44,11 @@ jQuery (document).ready(function ($){
         let user_password  = $('#user_password_register').val();
         let notif          = $('.alert');
         $.ajax({
-            url:        "/wp-admin/admin-ajax.php",
-            type:       "post",
-            dataType:   "json",
+            url:        '/wp-admin/admin-ajax.php',
+            type:       'post',
+            dataType:   'json',
             data: {
-                action: "wp_auth_register",
+                action: 'wp_auth_register',
                 first_name_reg:    first_name,
                 last_name_reg:     last_name,
                 user_email_reg:    user_email,
@@ -58,11 +59,10 @@ jQuery (document).ready(function ($){
             error: function (error){
                 if (error)
                 {
-                    let message = error.responseJSON.message;
                     notif.addClass('alert_error');
-                    notif.html('<p>+ message + </p>');
+                    notif.html('<p>خطایی رخ داده</p>');
                     notif.css('display', 'block');
-                    notif.delay(5000).hide(3000);
+                    notif.delay(3000).hide(3000);
 
                 }
             }

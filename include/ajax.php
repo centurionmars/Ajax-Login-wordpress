@@ -58,4 +58,20 @@ function wp_auth_validate_email_and_password ($email, $password): array {
 	}
 	return $result;
 }
+/*********** validation function for register ****************/
+function wp_auth_do_register ()
+{
+	$user_first_name = sanitize_text_field($_POST['first_name_reg']);
+	$user_last_name = sanitize_text_field($_POST['last_name_reg']);
+	$user_email = sanitize_text_field($_POST['user_email_reg']);
+	$user_password = sanitize_text_field($_POST['user_password_reg']);
+	var_dump($user_first_name, $user_last_name, $user_email, $user_password);
+//	var_dump($_POST);
+	$validateResult = validate_register_request($user_first_name, $user_last_name, $user_email, $user_password);
+}
+function validate_register_request($user_first_name, $user_last_name, $user_email, $user_password)
+{
+
+}
 add_action('wp_ajax_nopriv_wp_auth_login', 'wp_auth_do_login');
+add_action('wp_ajax_nopriv_wp_auth_register', 'wp_auth_do_register');
