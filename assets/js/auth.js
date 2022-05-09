@@ -55,12 +55,21 @@ jQuery (document).ready(function ($){
                 user_password_reg: user_password,
             },
             success: function (response){
+                if (response.success) {
+                    notif.removeClass('alert_error').addClass('alert_success');
+                    notif.html('<p>' + response.message + '</p>');
+                    notif.css('display', 'block');
+                    setTimeout(function (){
+                        window.location.href = '/login';
+                    }, 2000);
+                }
             },
             error: function (error){
                 if (error)
                 {
+                    let message = error.responseJSON.message;
                     notif.addClass('alert_error');
-                    notif.html('<p>خطایی رخ داده</p>');
+                    notif.html('<p>'+message+'</p>');
                     notif.css('display', 'block');
                     notif.delay(3000).hide(3000);
 

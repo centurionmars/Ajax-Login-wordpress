@@ -65,13 +65,57 @@ function wp_auth_do_register ()
 	$user_last_name = sanitize_text_field($_POST['last_name_reg']);
 	$user_email = sanitize_text_field($_POST['user_email_reg']);
 	$user_password = sanitize_text_field($_POST['user_password_reg']);
-	var_dump($user_first_name, $user_last_name, $user_email, $user_password);
-//	var_dump($_POST);
 	$validateResult = validate_register_request($user_first_name, $user_last_name, $user_email, $user_password);
+	if (!$validateResult['is_valid']){
+		wp_send_json([
+			'success' => false,
+			'message' => $validateResult['message'],
+		],422);
+	}
+	$userEmailPart = explode('@', $user_email);
+	$new_user = wp_insert_user([
+		'user_login'   => $userEmailPart[0], rand(1000, 9999),
+		'user_pass'    => $user_password,
+		'user_email'   => $user_email,
+		'first_name'   => $user_first_name,
+		'last_name'    => $user_last_name,
+		'display_name' => "$user_first_name $user_last_name",
+	]);
+	if (is_wp_error($new_user)) {
+		wp_send_json(
+			[
+				'success' => false,
+				'message' => 'خطایی در ثبت نام شما رخ داده است'
+			],500);
+	}
+	wp_send_json(
+		[
+			'success' => true,
+			'message' => 'ثبت نام شما با موفقیت انجام شد'
+		],200);
 }
-function validate_register_request($user_first_name, $user_last_name, $user_email, $user_password)
-{
-
+function validate_register_request($first_name, $last_name, $email, $password): array {
+	$result = [
+		'is_valid' => true,
+		'message' => "",
+	];
+	if (empty($first_name) || empty($last_name) || empty($email) || empty($password))
+	{
+		$result['is_valid'] = false;
+		$result['message'] = 'تمامی فیلدها الزامی میباشد';
+		return $result;
+	}
+	if (!is_email($email)){
+		$result['is_valid'] = false;
+		$result['message'] = 'ایمیل وارد شده معتبر نمیباشد';
+		return $result;
+	}
+	if (email_exists($email)){
+		$result['is_valid'] = false;
+		$result['message'] = 'استفاده ازین ایمیل امکان پذیر نمیباشد';
+		return $result;
+	}
+	return $result;
 }
 add_action('wp_ajax_nopriv_wp_auth_login', 'wp_auth_do_login');
 add_action('wp_ajax_nopriv_wp_auth_register', 'wp_auth_do_register');
