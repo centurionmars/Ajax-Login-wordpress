@@ -23,7 +23,7 @@
                 <input type="password" placeholder="کلمه عبور" class="textInput" name="user_password_register" id="user_password_register">
             </div>
             <div class="form-row">
-                <button name="submitLogin" class="loginButton">ورود</button>
+                <button name="submitLogin" class="loginButton">ثبت نام</button>
             </div>
         </form>
     </div>
