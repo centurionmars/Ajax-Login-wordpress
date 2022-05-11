@@ -76,7 +76,7 @@ function wp_auth_do_register ()
 	}
 	$userEmailPart = explode('@', $user_email);
 	$new_user = wp_insert_user([
-		'user_login'   => $userEmailPart[0], rand(1000, 9999),
+		'user_login'   => $userEmailPart[0]. rand(1000, 9999),
 		'user_pass'    => $user_password,
 		'user_email'   => $user_email,
 		'first_name'   => $user_first_name,
@@ -96,7 +96,6 @@ function wp_auth_do_register ()
 			'message' => 'ثبت نام شما با موفقیت انجام شد'
 		],200);
 }
-
 function function_name($user_id, $userdata)
 {
 	$result = get_option('user_register',[]);
