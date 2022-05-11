@@ -1,6 +1,10 @@
 <div class="auth-wrapper">
     <div class="alert" style="display: none;"></div>
     <div class="register-wrapper">
+	    <?php if ( isset( $wp_auth_options['register_form_title'] ) ): ?>
+            <h2><?php echo $wp_auth_options['register_form_title']; ?></h2>
+	    <?php endif; ?>
+        <?php var_dump($wp_auth_options['register_form_title']); ?>
         <form action="" method="post" id="registerForm">
             <div class="form-row">
                 <label for="f_name"></label>

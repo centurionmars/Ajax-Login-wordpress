@@ -1,6 +1,7 @@
 <?php
 function wp_auth_login_handler($atts, $content = null)
 {
+	$wp_auth_options = get_option('wp_auth_options', []);
 	include WP_AUTH_TPL."front/login.php";
 }
 function wp_auth_register_handler($atts, $content = null)

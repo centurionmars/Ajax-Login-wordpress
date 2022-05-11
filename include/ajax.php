@@ -61,16 +61,18 @@ function wp_auth_validate_email_and_password ($email, $password): array {
 /*********** validation function for register ****************/
 function wp_auth_do_register ()
 {
-	$user_first_name = sanitize_text_field($_POST['first_name_reg']);
-	$user_last_name = sanitize_text_field($_POST['last_name_reg']);
-	$user_email = sanitize_text_field($_POST['user_email_reg']);
-	$user_password = sanitize_text_field($_POST['user_password_reg']);
-	$validateResult = validate_register_request($user_first_name, $user_last_name, $user_email, $user_password);
-	if (!$validateResult['is_valid']){
-		wp_send_json([
+	$user_first_name  = sanitize_text_field($_POST['first_name_reg']);
+	$user_last_name   = sanitize_text_field($_POST['last_name_reg']);
+	$user_email       = sanitize_text_field($_POST['user_email_reg']);
+	$user_password    = sanitize_text_field($_POST['user_password_reg']);
+	$validateResult   = validate_register_request($user_first_name, $user_last_name, $user_email, $user_password);
+	if (!$validateResult['is_valid'])
+	{
+		wp_send_json(
+			[
 			'success' => false,
 			'message' => $validateResult['message'],
-		],422);
+			],422);
 	}
 	$userEmailPart = explode('@', $user_email);
 	$new_user = wp_insert_user([
@@ -93,6 +95,13 @@ function wp_auth_do_register ()
 			'success' => true,
 			'message' => 'ثبت نام شما با موفقیت انجام شد'
 		],200);
+}
+
+function function_name($user_id, $userdata)
+{
+	$result = get_option('user_register',[]);
+	$result[$user_id] = $userdata['user_login'];
+	update_option('user_register',$result,);
 }
 function validate_register_request($first_name, $last_name, $email, $password): array {
 	$result = [
@@ -119,3 +128,4 @@ function validate_register_request($first_name, $last_name, $email, $password): 
 }
 add_action('wp_ajax_nopriv_wp_auth_login', 'wp_auth_do_login');
 add_action('wp_ajax_nopriv_wp_auth_register', 'wp_auth_do_register');
+add_action( 'user_register','function_name');

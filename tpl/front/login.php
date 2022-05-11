@@ -1,6 +1,9 @@
 <div class="auth-wrapper">
     <div class="alert" style="display: none;"></div>
     <div class="login-wrapper">
+	    <?php if ( isset( $wp_auth_options['login_form_title'] ) ): ?>
+            <h2><?php echo $wp_auth_options['login_form_title']; ?></h2>
+	    <?php endif; ?>
         <form action="" method="post" id="loginForm">
             <div class="form-row">
                 <label for="userEmail" class="textLabel" ></label>

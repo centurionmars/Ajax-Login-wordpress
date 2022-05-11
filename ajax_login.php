@@ -18,3 +18,6 @@ const WP_AUTH_TPL = WP_AUTH_DIR . '/tpl/';
 include WP_AUTH_INC. "functions.php";
 include WP_AUTH_INC. "shortcodes.php";
 include WP_AUTH_INC. "ajax.php";
+if (is_admin()){
+	include WP_AUTH_INC."admin.php";
+}
