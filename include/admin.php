@@ -1,13 +1,13 @@
 <?php
 function wp_auth_admin_settings(){
 	add_menu_page(
-		'تنظیمات',
+		 'تنظیمات',
 		'ورود و ثبت نام',
-		'manage_options',
+		 'manage_options',
 		'wp_auth',
-		'wp_auth_settings',
-		'dashicons-admin-users',
-		'3'
+		  'wp_auth_settings',
+		  'dashicons-admin-users',
+		  '3',
 	);
 }
 function wp_auth_settings()

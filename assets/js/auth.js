@@ -60,7 +60,7 @@ jQuery (document).ready(function ($){
                     notif.html('<p>' + response.message + '</p>');
                     notif.css('display', 'block');
                     setTimeout(function (){
-                        window.location.href = '/login';
+                        window.location.href = '/';
                     }, 2000);
                 }
             },

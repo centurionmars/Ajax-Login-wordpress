@@ -1,4 +1,5 @@
 <div class="wrap">
+    <?php $wp_auth_options = get_option('wp_auth_options', []); ?>
     <h1>اتنظیمات فرم ورود و ثبت نام</h1>
     <form method="post">
         <table class="form-table">

@@ -7,7 +7,7 @@ Author: mars
 Author URI: https://cyclestart.ir
 Text Domain: wordpress-login
 Domain Path: /languages/
-Version: 1.0.0
+Version: 1.0.1
 */
 
 define('WP_AUTH_DIR' , plugin_dir_path(__FILE__));
