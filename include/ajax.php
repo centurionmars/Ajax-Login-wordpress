@@ -102,8 +102,6 @@ function auto_login_after_register($user_id, $userdata)
 	update_option('user_register',$result);
     wp_set_current_user($user_id);
 	wp_set_auth_cookie($user_id);
-	wp_redirect('/');
-	exit();
 }
 function validate_register_request($first_name, $last_name, $email, $password): array {
 	$result = [
