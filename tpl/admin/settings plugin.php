@@ -1,6 +1,14 @@
 <div class="wrap">
+    <h1 class="nav-tab-wrapper">
+        <?php foreach ($tabs as $name => $title) : ?>
+            <?php $class = ($name == $curent_tab) ? 'nav-tab-active' : '' ?>
+            <a href="?page=wps/wps-settings.php&tab=<?php echo $name; ?>" class="nav-tab <?php echo $class;?>" >
+                <?php echo $title?>
+            </a>
+        <?php endforeach; ?>
+    </h1>
     <?php $wp_auth_options = get_option('wp_auth_options', []); ?>
-    <h1>اتنظیمات فرم ورود و ثبت نام</h1>
+    <h1>تنظیمات فرم ورود و ثبت نام</h1>
     <form method="post">
         <table class="form-table">
             <tr valign="top">

@@ -37,13 +37,13 @@ function wp_auth_validate_email_and_password ($email, $password): array {
 		'is_valid' => true,
 		'message' => "",
 	];
-	if(is_null($email) || empty($email))
+	if(empty($email))
 	{
 		$result['is_valid'] = false;
 		$result['message'] = 'ایمیل نمیتواند خالی باشد';
 		return $result;
 	}
-	if(is_null($password) || empty($password))
+	if(empty($password))
 	{
 		$result['is_valid'] = false;
 		$result['message'] = 'کلمه عبور نمیتواند خالی باشد';
