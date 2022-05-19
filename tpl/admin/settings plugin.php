@@ -2,7 +2,7 @@
     <h1 class="nav-tab-wrapper">
         <?php foreach ($tabs as $name => $title) : ?>
             <?php $class = ($name == $curent_tab) ? 'nav-tab-active' : '' ?>
-            <a href="?page=wps/wps-settings.php&tab=<?php echo $name; ?>" class="nav-tab <?php echo $class;?>" >
+            <a href=" <?php echo admin_url('?page=wp_auth&&tab='.$name)?>" class="nav-tab <?php echo $class;?>" >
                 <?php echo $title?>
             </a>
         <?php endforeach; ?>

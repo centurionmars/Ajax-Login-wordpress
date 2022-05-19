@@ -30,10 +30,16 @@ function wp_auth_settings()
 	$curent_tab = $_GET['tab'] ?? 'general';
 	var_dump($curent_tab);
 
-	if ($curent_tab == 'general')
+	if ($curent_tab == 'login')
 	{
-		include WP_AUTH_TPL.'/admin/options.php';
+		include WP_AUTH_TPL.'/admin/login-tab.php';
 	}
-	include WP_AUTH_TPL. "/admin/settings plugin.php";
+	elseif ($curent_tab == 'register')
+	{
+		include WP_AUTH_TPL.'/admin/register-tab.php';
+	}else
+	{
+		include WP_AUTH_TPL. "/admin/settings plugin.php";
+	}
 }
 add_action('admin_menu', 'wp_auth_admin_settings');
