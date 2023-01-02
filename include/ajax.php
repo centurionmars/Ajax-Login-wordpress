@@ -31,19 +31,20 @@ function wp_auth_do_login(){
 		'success' => true,
 		'message' => 'ورود موفق بود ، در حال انتقال . . .',
 	],200);
+	wp_die();
 }
 function wp_auth_validate_email_and_password ($email, $password): array {
 	$result = [
 		'is_valid' => true,
 		'message' => "",
 	];
-	if(empty($email))
+	if(is_null($email) || empty($email))
 	{
 		$result['is_valid'] = false;
 		$result['message'] = 'ایمیل نمیتواند خالی باشد';
 		return $result;
 	}
-	if(empty($password))
+	if(is_null($password) || empty($password))
 	{
 		$result['is_valid'] = false;
 		$result['message'] = 'کلمه عبور نمیتواند خالی باشد';
@@ -95,13 +96,11 @@ function wp_auth_do_register ()
 			'message' => 'ثبت نام شما با موفقیت انجام شد'
 		],200);
 }
-function auto_login_after_register($user_id, $userdata)
+function function_name($user_id, $userdata)
 {
- 	$result = get_option('user_register',[]);
+	$result = get_option('user_register',[]);
 	$result[$user_id] = $userdata['user_login'];
-	update_option('user_register',$result);
-    wp_set_current_user($user_id);
-	wp_set_auth_cookie($user_id);
+	update_option('user_register',$result,);
 }
 function validate_register_request($first_name, $last_name, $email, $password): array {
 	$result = [
@@ -128,4 +127,4 @@ function validate_register_request($first_name, $last_name, $email, $password): 
 }
 add_action('wp_ajax_nopriv_wp_auth_login', 'wp_auth_do_login');
 add_action('wp_ajax_nopriv_wp_auth_register', 'wp_auth_do_register');
-add_action( 'user_register','auto_login_after_register',1000,2);
+add_action( 'user_register','function_name');

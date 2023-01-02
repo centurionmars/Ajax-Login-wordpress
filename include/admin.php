@@ -1,13 +1,13 @@
 <?php
 function wp_auth_admin_settings(){
 	add_menu_page(
-		 'تنظیمات',
+		'تنظیمات',
 		'ورود و ثبت نام',
-		 'manage_options',
+		'manage_options',
 		'wp_auth',
-		  'wp_auth_settings',
-		  'dashicons-admin-users',
-		  '3',
+		'wp_auth_settings',
+		'dashicons-admin-users',
+		'3'
 	);
 }
 function wp_auth_settings()
@@ -21,25 +21,6 @@ function wp_auth_settings()
 		$wp_auth_options['register_form_title'] = sanitize_text_field($_POST['register_form_title']);
 		update_option('wp_auth_options', $wp_auth_options);
 	}
-	$tabs =
-		[
-			'general'   => 'عمومی',
-			'login'     => 'ورود',
-			'register'  => 'ثبت نام',
-		];
-	$curent_tab = $_GET['tab'] ?? 'general';
-	var_dump($curent_tab);
-
-	if ($curent_tab == 'login')
-	{
-		include WP_AUTH_TPL.'/admin/login-tab.php';
-	}
-	elseif ($curent_tab == 'register')
-	{
-		include WP_AUTH_TPL.'/admin/register-tab.php';
-	}else
-	{
-		include WP_AUTH_TPL. "/admin/settings plugin.php";
-	}
+	include WP_AUTH_TPL. "/admin/settings plugin.php";
 }
 add_action('admin_menu', 'wp_auth_admin_settings');
